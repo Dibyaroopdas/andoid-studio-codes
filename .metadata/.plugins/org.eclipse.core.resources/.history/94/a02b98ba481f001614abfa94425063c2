@@ -1,0 +1,39 @@
+package com.example.app3;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+import android.widget.Button;
+
+public class MainActivity3 extends Activity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main_activity3);
+        
+        Button b1=(Button)findViewById(R.id.button1);
+        Button b2=(Button)findViewById(R.id.button2);
+        Button b3=(Button)findViewById(R.id.button3);
+        Button b4=(Button)findViewById(R.id.button4);
+        Button b5=(Button)findViewById(R.id.button5);
+        Button b6=(Button)findViewById(R.id.button6);
+        Button b7=(Button)findViewById(R.id.button7);
+        Button b8=(Button)findViewById(R.id.button8);
+        Button b9=(Button)findViewById(R.id.button9);
+        Button b0=(Button)findViewById(R.id.button10);
+        Button bp=(Button)findViewById(R.id.button11);
+        Button bm=(Button)findViewById(R.id.button12);
+        Button bmu=(Button)findViewById(R.id.button13);
+        Button ba=(Button)findViewById(R.id.button14);
+        Button bd=(Button)findViewById(R.id.button15);
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main_activity3, menu);
+        return true;
+    }
+    
+}

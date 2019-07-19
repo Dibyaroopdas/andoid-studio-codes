@@ -1,0 +1,65 @@
+package com.example.appp54;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.view.Menu;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity54 extends Activity {
+
+	SQLiteDatabase db;
+	EditText ed1,ed2;
+	TextView tv;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main_activity54);
+        
+        tv=(TextView)findViewById(R.id.textView3);
+        ed1=(EditText)findViewById(R.id.editText1);
+        ed2=(EditText)findViewById(R.id.editText2);
+        Toast.makeText(getApplicationContext(), "Hello",Toast.LENGTH_LONG).show();
+        db=openOrCreateDatabase("Mydb",MODE_PRIVATE, null);
+        
+       db.execSQL("create table if not exists mytable(name varchar, sur_name varchar)");
+    }
+        public void insert(View v)
+        {
+        	String name=ed1.getText().toString();
+        	String sur_name=ed2.getText().toString();
+        	ed1.setText("");
+        	ed2.setText("");
+        	db.execSQL("insert into mytable values('"+name+"','"+sur_name+"')");
+        	Toast.makeText(getApplicationContext(), "Values inserted Succesfully", Toast.LENGTH_LONG).show();
+        	
+        }
+        
+        public void display(View v){
+        	Cursor c=db.rawQuery("select * from mytable",null);
+        	tv.setText("");
+        	c.moveToFirst();
+        	
+        	do{
+        		String name= c.getString(c.getColumnIndex("name"));
+        		String sur_name=c.getString(1);
+        		tv.append("name:"+name+" and surname:"+sur_name+"\n");
+        		
+        	}while(c.moveToNext());
+        	
+        }
+    
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main_activity54, menu);
+        return true;
+    }
+    
+}
